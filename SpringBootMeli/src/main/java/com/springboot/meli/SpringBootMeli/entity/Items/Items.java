@@ -3,6 +3,8 @@ package com.springboot.meli.SpringBootMeli.entity.Items;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Items {
 
 	public String id;
@@ -12,8 +14,8 @@ public class Items {
     public int seller_id;
     public String category_id;
     public Object official_store_id;
-    public int price;
-    public int base_price;
+    public double price;
+    public double base_price;
     public Object original_price;
     public String currency_id;
     public int initial_quantity;
@@ -38,6 +40,7 @@ public class Items {
     public String international_delivery_mode;
     public SellerAddress seller_address;
     public Object seller_contact;
+    @JsonIgnore
     public Location location;
     public List<Object> coverage_areas;
     public List<Attribute> attributes;

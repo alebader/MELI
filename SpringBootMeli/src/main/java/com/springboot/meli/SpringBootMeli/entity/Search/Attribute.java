@@ -11,5 +11,5 @@ public class Attribute{
     public ValueStruct value_struct;
     public List<Value> values;
     public String attribute_group_id;
-    public int source;
+    public long source;
 }
