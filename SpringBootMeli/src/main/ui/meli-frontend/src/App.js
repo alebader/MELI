@@ -1,4 +1,4 @@
-import { Buscador } from './components/buscador';
+import { Buscador } from './components/Nav';
 import { Items } from './components/items';
 
 function App() {
