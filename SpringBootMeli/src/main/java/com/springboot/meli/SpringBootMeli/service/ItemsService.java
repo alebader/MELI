@@ -8,16 +8,28 @@ import com.springboot.meli.SpringBootMeli.entity.ItemsDescription.ItemsDescripti
 public class ItemsService {
 
 	public Items obtenerProducto(String id) {
+		Items result = new Items();
+		try {
 		  	 final String uri = "https://api.mercadolibre.com/items/" + id;
 		     RestTemplate restTemplate = new RestTemplate();
-		     Items result = restTemplate.getForObject(uri, Items.class);      		     
+		     result = restTemplate.getForObject(uri, Items.class);
+		} catch(Exception ex) {
+	    	System.out.println("Error al obtener productos"); 
+	     }
 		     return result;
 	}
 	
 	public ItemsDescription obtenerProductoDescripcion(String id) {
-	  	 final String uri = "https://api.mercadolibre.com/items/" + id + "/description";
-	     RestTemplate restTemplate = new RestTemplate();
-	     ItemsDescription result = restTemplate.getForObject(uri, ItemsDescription.class);      		     
-	     return result;
-}
+		ItemsDescription result = new ItemsDescription();
+		try {
+			final String uri = "https://api.mercadolibre.com/items/" + id + "/description";
+			RestTemplate restTemplate = new RestTemplate();
+	     
+			result = restTemplate.getForObject(uri, ItemsDescription.class);
+		}catch(Exception ex) {
+	    	System.out.println("Error al obtener descripcion productos"); 
+	     }
+	     	return result;
+		
+	}
 }

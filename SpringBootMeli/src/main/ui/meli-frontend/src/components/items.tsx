@@ -26,6 +26,9 @@ function Items() {
     }
     const mostrarItems = datos != undefined ? true : false;
     if (mostrarItems) {
+        if(datos!.items == null || datos!.items.length == 0){
+            return(<div className="container" ><h2>No se encontraron datos para esta busqueda</h2></div>)
+        }
         return (
             <div className="container" >
                 <nav aria-label="breadcrumb">
