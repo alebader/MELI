@@ -6,7 +6,7 @@ import java.util.List;
 public class Prices{
     public String id;
     public String type;
-    public int amount;
+    public double amount;
     public Object regular_amount;
     public String currency_id;
     public Date last_updated;

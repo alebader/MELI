@@ -1119,3 +1119,8 @@ px
     line-height: 1em;
 }
 
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+

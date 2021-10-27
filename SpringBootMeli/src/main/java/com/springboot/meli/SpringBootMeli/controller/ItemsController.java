@@ -25,9 +25,7 @@ public class ItemsController {
 	
 	@GetMapping("/api/items/{id}")
 	public DatosItems obtenerProducto(@PathVariable String id) {		
-		Items itemsResponse = servicio.obtenerProducto(id);
-			
-		
+		Items itemsResponse = servicio.obtenerProducto(id);				
 		return mapearDatos(itemsResponse);
 	}
 	
@@ -38,7 +36,7 @@ public class ItemsController {
 		User autor = servicioUser.obtenerDatosUsuario(itemsResponse.seller_id);
 		
 		datos.setAuthor(new Author(autor.getNickname(), autor.getNickname()));
-		datos.setItem(new Item(itemsResponse.id, itemsResponse.title, obtenerPrice(itemsResponse.currency_id, itemsResponse.price, 2), 
+		datos.setItem(new Item(itemsResponse.id, itemsResponse.title, obtenerPrice(itemsResponse.currency_id, itemsResponse.price), 
 				obtenerPicture(itemsResponse.pictures), itemsResponse.condition, itemsResponse.shipping.free_shipping, 
 				itemsResponse.sold_quantity, descripcion));
 		
@@ -49,8 +47,10 @@ public class ItemsController {
 		return pictures.get(0).url;
 	}
 
-	private Price obtenerPrice(String currency, double amount, int decimals) {
-		return new Price(currency, amount, decimals);
+	private Price obtenerPrice(String currency, double amount) {
+		long valorEntero = (long) amount;
+		double valorDecimal = amount - valorEntero;		
+		return new Price(currency, valorEntero, (int)valorDecimal);
 	}
 }
 

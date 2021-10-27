@@ -8,7 +8,7 @@ public class Result{
     public String site_id;
     public String title;
     public Seller seller;
-    public int price;
+    public double price;
     public Price prices;
     public Object sale_price;
     public String currency_id;
