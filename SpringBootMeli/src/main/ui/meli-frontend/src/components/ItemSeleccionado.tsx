@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import IProductoSeleccionado from "../interfaces/IProductoSeleccionado";
 import { obtenerProductoSeleccionado } from "../services/productoServices";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../assets/css/items.css';
+import Loader from "./Loader";
 
 function ItemSeleccionado() {
     const value: { id: string } = useParams();
-    const [itemSeleccionado, setItemSeleccionado] = useState<IProductoSeleccionado | undefined>(undefined)
+    const [itemSeleccionado, setItemSeleccionado] = useState<IProductoSeleccionado | undefined>(undefined)    
+    const history = useHistory();
 
     useEffect(() => {
-        obtenerProductoSeleccionado(value.id).then((item: any) => setItemSeleccionado(item));
+        obtenerProductoSeleccionado(value.id).then((item: any) => setItemSeleccionado(item));      
     }, []);
 
 
@@ -30,7 +33,7 @@ function ItemSeleccionado() {
                         <div className="card-block">
                             <p>{obtenerCondicion(itemSeleccionado.item.condition) + " - " + itemSeleccionado.item.sold_quantity + " vendidos"}</p>
                             <h4>{itemSeleccionado.item.title}</h4><br />
-                            <h2>$ {separadorMiles(itemSeleccionado.item.price.amount)}<span style={{ fontSize: '.6em', verticalAlign: 'text-top' }}>{completarCeros(itemSeleccionado.item.price.decimals)}</span></h2><br />
+                            <h2>$ {separadorMiles(itemSeleccionado.item.price.amount)}<span className="monto-seleccionado">{completarCeros(itemSeleccionado.item.price.decimals)}</span></h2><br />
                             <button type="button" className="btn btn-primary btn-lg btn-block w-100">Comprar</button>
                         </div>
                     </div>
@@ -39,7 +42,7 @@ function ItemSeleccionado() {
         </div>
         )
     } else {
-        return (<div></div>);
+        return (<Loader />);
     }
 
     function obtenerCondicion(condicion: string) {

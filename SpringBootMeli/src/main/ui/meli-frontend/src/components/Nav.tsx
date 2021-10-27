@@ -21,7 +21,7 @@ function Nav() {
                 </a>
                 <form className="form-inline w-100 p-3">
                     <div className="input-group input-group-search mx-auto">
-                        <input type="search" value={valorBusqueda} onChange={handleInputChange} className="form-control" aria-label="Ingresá lo que quieras encontrar" name="search" placeholder="Nunca dejes de buscar" />
+                        <input key="ip_busqueda" type="search" value={valorBusqueda} onChange={handleInputChange} className="form-control" aria-label="Ingresá lo que quieras encontrar" name="search" placeholder="Nunca dejes de buscar" />
                         <div className="input-group-append">
                             <button className="btn bg-light" type="submit" id="search-button-addon" onClick={onClickProductos}><i className="fa fa-search"></i></button>
                         </div>

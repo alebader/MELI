@@ -10,10 +10,10 @@ import ItemSeleccionado from './components/ItemSeleccionado';
 const App = () =>
   <Router>
     <div>
-      <Nav />
+      <Nav key="nav" />
       <Route exact path="/" component={Home} />
       <Route exact path="/api/items" component={Items} />
-      <Route exact path="/api/items/:id" component={ItemSeleccionado} />
+      <Route exact path="/api/items/:id" component={ItemSeleccionado} />    
     </div>
   </Router>;
 

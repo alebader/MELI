@@ -1,7 +1,7 @@
 export async function obtenerProductos(query: any) {
     let response: any = null;
     try {
-        response = await fetch('/api/items?search=' + query);
+        response = await fetch('/api/productos?search=' + query);
     } catch (ex) {
         console.error("Error al obtener los productos.");
     }
@@ -11,7 +11,7 @@ export async function obtenerProductos(query: any) {
 export async function obtenerProductoSeleccionado(id: any) {
     let response: any = null;
     try {
-        response = await fetch('/api/items/' + id);
+        response = await fetch('/api/productos/' + id);
     } catch (ex) {
         console.error("Error al obtener producto seleccionado.");
     }

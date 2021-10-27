@@ -23,7 +23,7 @@ public class ItemsController {
 	UserService servicioUser = new UserService();
 	DatosItems datos = new DatosItems();
 	
-	@GetMapping("/api/items/{id}")
+	@GetMapping("/api/productos/{id}")
 	public DatosItems obtenerProducto(@PathVariable String id) {		
 		Items itemsResponse = servicio.obtenerProducto(id);				
 		return mapearDatos(itemsResponse);
@@ -31,7 +31,7 @@ public class ItemsController {
 	
 	
 	private DatosItems mapearDatos(Items itemsResponse) {
-		
+	try {	
 		String descripcion = (servicio.obtenerProductoDescripcion(itemsResponse.id)).plain_text; 
 		User autor = servicioUser.obtenerDatosUsuario(itemsResponse.seller_id);
 		
@@ -39,6 +39,9 @@ public class ItemsController {
 		datos.setItem(new Item(itemsResponse.id, itemsResponse.title, obtenerPrice(itemsResponse.currency_id, itemsResponse.price), 
 				obtenerPicture(itemsResponse.pictures), itemsResponse.condition, itemsResponse.shipping.free_shipping, 
 				itemsResponse.sold_quantity, descripcion));
+		} catch (Exception ex) {
+			System.out.println("Error al mapear los datos. Error: " +  ex.getMessage());
+		}
 		
 		return datos;
 	}
