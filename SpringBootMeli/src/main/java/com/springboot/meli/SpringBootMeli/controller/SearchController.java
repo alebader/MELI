@@ -29,7 +29,7 @@ import com.springboot.meli.SpringBootMeli.entity.Category.Category;
 public class SearchController {
 	UserService servicioUser = new UserService();
 	
-	@RequestMapping("/api/productos")
+	@RequestMapping("/items")
 	public DatosBusqueda obtenerProductos(@RequestParam String search) {
 		SearchService servicio = new SearchService();
 		Search searchResponse =  servicio.obtenerDatosBusqueda(search);

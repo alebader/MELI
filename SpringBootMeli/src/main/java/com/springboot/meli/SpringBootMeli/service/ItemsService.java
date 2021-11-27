@@ -20,16 +20,16 @@ public class ItemsService {
 	}
 	
 	public ItemsDescription obtenerProductoDescripcion(String id) {
-		ItemsDescription result = new ItemsDescription();
-		try {
+		ItemsDescription result = new ItemsDescription();		
+		try 
+		{
 			final String uri = "https://api.mercadolibre.com/items/" + id + "/description";
 			RestTemplate restTemplate = new RestTemplate();
 	     
 			result = restTemplate.getForObject(uri, ItemsDescription.class);
-		}catch(Exception ex) {
-	    	System.out.println("Error al obtener descripcion productos"); 
-	     }
-	     	return result;
-		
+		} catch(Exception ex) {
+			System.out.println("Error al obtener descripcion productos"); 
+		}
+	     return result;		
 	}
 }

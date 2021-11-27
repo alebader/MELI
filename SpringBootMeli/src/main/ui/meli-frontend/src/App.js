@@ -1,5 +1,5 @@
 import { Buscador } from './components/Nav';
-import { Items } from './components/items';
+import { Items } from './components/ListaItems';
 
 function App() {
   return (

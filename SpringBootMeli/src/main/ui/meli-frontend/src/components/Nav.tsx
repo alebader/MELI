@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -10,7 +10,7 @@ function Nav() {
     const handleInputChange = (e: { target: { value: any; }; }) => setValorBusqueda(e.target.value);
 
     const onClickProductos = () => {
-        history.push('/api/items?search=' + valorBusqueda);
+        history.push('/items?search=' + valorBusqueda);
     }
 
     return (

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Nav from "./components/Nav";
-import Items from './components/items';
+import ListaItems from './components/ListaItems';
 import { Home } from './components/Home';
 import ItemSeleccionado from './components/ItemSeleccionado';
 
@@ -12,8 +12,8 @@ const App = () =>
     <div>
       <Nav key="nav" />
       <Route exact path="/" component={Home} />
-      <Route exact path="/api/items" component={Items} />
-      <Route exact path="/api/items/:id" component={ItemSeleccionado} />    
+      <Route exact path="/items" component={ListaItems} />
+      <Route exact path="/items/:id" component={ItemSeleccionado} />
     </div>
   </Router>;
 

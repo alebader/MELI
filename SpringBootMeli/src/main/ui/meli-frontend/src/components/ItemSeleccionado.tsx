@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import IProductoSeleccionado from "../interfaces/IProductoSeleccionado";
 import { obtenerProductoSeleccionado } from "../services/productoServices";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,7 +9,6 @@ import Loader from "./Loader";
 function ItemSeleccionado() {
     const value: { id: string } = useParams();
     const [itemSeleccionado, setItemSeleccionado] = useState<IProductoSeleccionado | undefined>(undefined)    
-    const history = useHistory();
 
     useEffect(() => {
         obtenerProductoSeleccionado(value.id).then((item: any) => setItemSeleccionado(item));      
@@ -21,8 +20,8 @@ function ItemSeleccionado() {
             <div className="card float-right">
                 <div className="row p-3">
                     <div className="col-sm-9 col px-md-5">
-                        <div className="row">
-                            <img className="img-responsive" src={itemSeleccionado.item.picture} />
+                        <div className="row justify-content-center align-self-center">
+                            <img className="img-responsive" style={{maxWidth: 500}} src={itemSeleccionado.item.picture} />
                         </div>
                         <div className="col-md-12 mt-5">
                             <h4>Descripcion del producto</h4><br />

@@ -23,7 +23,7 @@ public class ItemsController {
 	UserService servicioUser = new UserService();
 	DatosItems datos = new DatosItems();
 	
-	@GetMapping("/api/productos/{id}")
+	@GetMapping("/items/{id}")
 	public DatosItems obtenerProducto(@PathVariable String id) {		
 		Items itemsResponse = servicio.obtenerProducto(id);				
 		return mapearDatos(itemsResponse);
